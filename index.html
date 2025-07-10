@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notícias sobre McDonald's e Bob's.">
+    <meta name="keywords" content="notícias, McDonald's, Bob's, fast food">
+    <meta name="author" content="Seu Nome">
+    <meta name="robots" content="index, follow">
+    <title>Notícias McDonald's e Bob's</title>
+
+    <style>
+        /* Reset básico de estilos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #f57c00;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .news-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-container h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #ffecb3;
+            border-radius: 5px;
+            border: 1px solid #f57c00;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #f57c00;
+            text-decoration: none;
+        }
+
+        .random-container {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            padding: 10px;
+            background-color: #ffecb3;
+            border: 1px solid #f57c00;
+            border-radius: 5px;
+        }
+
+        /* Estilo da propaganda piscante */
+        .ad-banner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f57c00;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            font-size: 1.2rem;
+            animation: blink 1s infinite alternate;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 70%;
+            max-width: 400px;
+        }
+
+        /* Animação de piscar */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .ad-banner button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .ad-banner button:hover {
+            color: #f2a500;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Notícias do McDonald's e Bob's</h1>
+    </header>
+
+    <!-- Propaganda piscante -->
+    <div class="ad-banner" id="ad-banner">
+        <span><a href="https://victorxx.github.io/topicogithub01/randomizador.html">CONFIRA A OPORTUNIDADE</a></span>
+        <button onclick="closeAd()">X</button>
+    </div>
+
+    <section>
+        <div class="news-container">
+            <h2>Últimas Notícias</h2>
+            
+            <div class="news-item" id="mcdonalds-news">
+                <!-- Notícias do McDonald's serão exibidas aqui -->
+            </div>
+            
+            <div class="news-item" id="bobs-news">
+                <!-- Notícias do Bob's serão exibidas aqui -->
+            </div>
+
+            <div class="random-container" id="random-content">
+                <!-- Números e letras aleatórias serão exibidos aqui -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Serviço</a></p>
+    </footer>
+
+    <script>
+        // Arrays com as notícias
+        const mcdonaldsNews = [
+                "McDonald's lança novo hambúrguer gourmet com ingredientes premium.",
+                "McDonald's anuncia expansão de restaurantes para mais cidades.",
+                "Promoção exclusiva: compre um McFlurry e ganhe um brinde surpresa.",
+                "Bob’s lança novo hambúrguer gourmet com ingredientes premium,",
+
+                "Bob’s anuncia expansão de restaurantes para mais cidades,",
+
+                "Promoção exclusiva: compre um Bob’s Shake e ganhe um brinde surpresa,",
+
+                "Bob’s apresenta novos combos com opções vegetarianas,",
+
+                "Bob’s amplia horário de funcionamento em várias unidades,",
+
+                "Bob’s lança aplicativo de pedidos com desconto para novos usuários,",
+
+                "Bob’s oferece refil grátis de refrigerante em novos restaurantes,",
+
+                "Bob’s inaugura drive-thru mais rápido e eficiente em SP,",
+
+                "Novo Bob’s Chicken com molho picante chega aos restaurantes Bob’s,",
+
+                "Bob’s faz parceria com marca de bebidas premium para novos milkshakes,",
+
+                "Bob’s cria edição limitada de hambúrgueres com ingredientes locais,",
+
+                "Promoção de verão: compre qualquer sanduíche e ganhe uma batata pequena,",
+
+                "Bob’s aposta em novos pratos no cardápio para o público fitness,",
+
+                "Bob’s inaugura restaurante totalmente digital em Curitiba,",
+
+                "Bob’s oferece novos itens sem glúten em seu menu,",
+
+                "Bob’s fecha parceria com artistas locais para decoração exclusiva,",
+
+                "Bob’s lança versão mini de seu famoso X-Tudo,",
+
+                "Bob’s promove evento de lançamento de hambúrgueres especiais,",
+
+                "Novo menu de sobremesas gourmet é lançado pela Bob’s,",
+
+                "Bob’s oferece desconto para clientes que pedirem via aplicativo,",
+
+                "Bob’s investe em novos sistemas de pagamento por celular,",
+
+                "Bob’s aposta em novos hambúrgueres com carne vegetal,",
+
+                "Promoção: ganhe um refrigerante grátis ao pedir combo familiar no Bob’s,",
+
+                "Bob’s abre novas unidades com conceito sustentável e eco-friendly,",
+
+                "Bob’s lança edição limitada de milkshakes com sabor exclusivo,",
+
+                "Bob’s promove campanha de conscientização sobre alimentação saudável,",
+
+                "Novo Bob’s Toast com queijo e peito de peru é a novidade do Bob’s,",
+
+                "Bob’s oferece sobremesas de edição limitada por tempo restrito,",
+
+                "Bob’s lança novos combos com porções menores para lanche rápido,",
+
+                "Bob’s lança hambúrguer com carne de frango empanada e molho especial,",
+
+                "Bob’s apresenta novas opções de café da manhã com ovos caipiras,",
+
+
+            
+        ];
+
+        const bobsNews = [
+
+                "Bob's celebra 60 anos com descontos e novidades no cardápio.",
+                "Novo milkshake do Bob's conquista fãs com sabor inovador.",
+                "Bob's investe em novos pratos veganos no cardápio.",
+                "McDonald's lança novo hambúrguer gourmet com ingredientes premium,",
+
+                "McDonald's anuncia expansão de restaurantes para mais cidades,",
+
+                "Promoção exclusiva: compre um McFlurry e ganhe um brinde surpresa,",
+
+                "McDonald's apresenta novos combos com opções vegetarianas,",
+
+                "McDonald's amplia horário de funcionamento em várias unidades,",
+
+                "McDonald's lança aplicativo de pedidos com desconto para novos usuários,",
+
+                "McDonald's oferece refil grátis de refrigerante em novos restaurantes,",
+
+                "McDonald's inaugura drive-thru mais rápido e eficiente em SP,",
+
+                "Novo McChicken com molho picante chega aos restaurantes McDonald's,",
+
+                "McDonald's faz parceria com marca de bebidas premium para novos milkshakes,",
+
+                "McDonald's cria edição limitada de hambúrgueres com ingredientes locais,",
+
+                "Promoção de verão: compre qualquer sanduíche e ganhe uma batata pequena,",
+
+                "McDonald's aposta em novos pratos no cardápio para o público fitness,",
+
+                "McDonald's inaugura restaurante totalmente digital em Curitiba,",
+
+                "McDonald's oferece novos itens sem glúten em seu menu,",
+
+                "McDonald's fecha parceria com artistas locais para decoração exclusiva,",
+
+                "McDonald's lança versão mini de seu famoso Big Mac,",
+
+                "McDonald's promove evento de lançamento de hambúrgueres especiais,",
+
+                "Novo menu de sobremesas gourmet é lançado pela McDonald's,",
+
+                "McDonald's oferece desconto para clientes que pedirem via aplicativo,",
+
+                "McDonald's investe em novos sistemas de pagamento por celular,",
+
+                "McDonald's aposta em novos hambúrgueres com carne vegetal,",
+
+                "Promoção: ganhe um refrigerante grátis ao pedir combo familiar no McDonald's,",
+
+                "McDonald's abre novas unidades com conceito sustentável e eco-friendly,",
+
+                "McDonald's lança edição limitada de milkshakes com sabor exclusivo,",
+
+                "McDonald's promove campanha de conscientização sobre alimentação saudável,",
+
+                "Novo McToast com queijo e peito de peru é a novidade do McDonald's,",
+
+                "McDonald's oferece sobremesas de edição limitada por tempo restrito,",
+
+                "McDonald's lança novos combos com porções menores para lanche rápido,",
+
+                "McDonald's lança hambúrguer com carne de frango empanada e molho especial,",
+
+                "McDonald's apresenta novas opções de café da manhã com ovos caipiras,",
+
+                "McDonald's cria uma linha de snacks saudáveis para o público jovem,",
+
+                "McDonald's inicia campanha de doação de alimentos para crianças carentes,",
+
+                "McDonald's vai lançar hambúrguer gourmet com carne Wagyu,",
+
+                "Promoção especial: compre um Happy Meal e ganhe um brinquedo exclusivo,",
+
+                "McDonald's vai inaugurar unidades em shoppings de luxo com design exclusivo,",
+
+                "McDonald's lança hambúrguer com ingredientes regionais, inspirado na culinária local,",
+
+                "McDonald's promove campanha de marketing com celebridades do esporte,",
+
+                "McDonald's estreia novos sabores de molhos exclusivos para hambúrgueres,",
+
+                "McDonald's lança novos pratos no cardápio para clientes vegetarianos e veganos,",
+
+                "McDonald's oferece desconto para clientes que pedem online durante a pandemia,",
+
+                "McDonald's oferece hambúrgueres de frango em versões vegetarianas,",
+
+                "McDonald's cria linha de sobremesas especiais para a época de festas,",
+
+                "McDonald's oferece combo de café da manhã com pães artesanais,",
+
+                "McDonald's apresenta nova linha de cafés gourmet com grãos selecionados,",
+
+                "McDonald's lança novidade de hambúrgueres com molho BBQ picante,",
+
+                "McDonald's oferece promoção de meia-noite com preços especiais em combos,",
+
+                "McDonald's anuncia novas opções de sobremesas congeladas em seus restaurantes,",
+
+                "McDonald's lança novos produtos com ingredientes orgânicos,",
+
+                "McDonald's traz para o Brasil novos sabores de nuggets de frango,",
+
+                "Promoção: compre um sanduíche e ganhe um voucher de desconto para a próxima compra,",
+
+                "McDonald's introduz novas opções de bebidas com baixo teor de açúcar,",
+
+                "McDonald's lança hambúrguer especial para o Natal com ingredientes exclusivos,",
+
+                "McDonald's inaugura nova unidade com arquitetura moderna e sustentável,",
+
+                "McDonald's lança edição limitada de McFlurry com sabores tropicais,",
+
+                "Promoção exclusiva: na compra de qualquer sobremesa, ganhe uma batata grande,",
+
+                "McDonald's cria linha de lanche para o público que segue dietas low carb,",
+
+                "McDonald's amplia opções de delivery e aumenta a rapidez das entregas,",
+
+                "McDonald's adota novos métodos de embalagem para reduzir impacto ambiental,",
+
+                "McDonald's inaugura novo restaurante temático, inspirado no universo dos videogames,",
+
+                "McDonald's oferece combo especial para casais no Dia dos Namorados,",
+
+                "McDonald's fecha parceria com uma rede de academias para oferecer descontos,",
+
+                "McDonald's apresenta novos McNuggets com sabores exóticos e picantes,",
+
+                "McDonald's lança novos smoothies feitos com frutas frescas e sem adição de açúcar,",
+
+                "Promoção: compre um combo e ganhe um ingresso para o cinema,",
+
+                "McDonald's oferece refil de batata grátis para clientes no drive-thru,",
+
+                "McDonald's lança hambúrguer vegetariano com carne de soja e molho especial,",
+        ];
+
+        // Função para exibir as notícias
+        function displayNews() {
+            // Exibindo as notícias do McDonald's
+            const mcdonaldsContainer = document.getElementById('mcdonalds-news');
+            mcdonaldsNews.forEach(news => {
+                const newsElement = document.createElement('p');
+                newsElement.textContent = news;
+                mcdonaldsContainer.appendChild(newsElement);
+            });
+
+            // Exibindo as notícias do Bob's
+            const bobsContainer = document.getElementById('bobs-news');
+            bobsNews.forEach(news => {
+                const newsElement = document.createElement('p');
+                newsElement.textContent = news;
+                bobsContainer.appendChild(newsElement);
+            });
+        }
+
+        // Função para gerar conteúdo randomizado
+        function generateRandomContent() {
+            // Gerando número aleatório entre 1 e 100
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+            // Gerando uma letra aleatória
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
+
+            // Exibindo o conteúdo randomizado
+            const randomContent = `Número aleatório: ${randomNumber} | Letra aleatória: ${randomLetter}`;
+            document.getElementById('random-content').textContent = randomContent;
+        }
+
+        // Função para fechar a propaganda
+        function closeAd() {
+            const adBanner = document.getElementById('ad-banner');
+            adBanner.style.display = 'none';  // Esconde o banner
+        }
+
+        // Chama as funções quando a página carrega
+        window.onload = () => {
+            displayNews(); // Exibe as notícias
+            generateRandomContent(); // Gera conteúdo randomizado
+        };
+    </script>
+
+</body>
+</html>
